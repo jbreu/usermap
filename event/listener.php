@@ -203,11 +203,14 @@ class listener extends \tas2580\usermap\includes\class_usermap implements EventS
 		{
 			$default_country = $this->request->variable('default_country', '');
 			$zip = $this->request->variable('usermap_zip', '');
-			if (!empty($zip))
+			$usermap_wohnort_new = $this->request->variable('pf_wohnort', '');
+
+			if (!empty($usermap_wohnort_new))
 			{
-				$this->info = $this->get_cords_form_zip($zip, $default_country, $error);
+				$this->info = $this->get_cords_form_zip($usermap_wohnort_new, $default_country, $error);
 				$this->info['zip'] = $zip;
 				$this->info['default_country'] = $default_country;
+				//print_r($this->info);
 			}
 		}
 		else

@@ -97,17 +97,26 @@ class listener_ucp extends \tas2580\usermap\includes\class_usermap implements Ev
 			if ($this->config['tas2580_usermap_input_method'] == 'zip')
 			{
 				$this->user->data['user_usermap_default_country'] = empty($this->user->data['user_usermap_default_country']) ? $this->config['tas2580_usermap_default_country'] : $this->user->data['user_usermap_default_country'];
+
+				$this->user->get_profile_fields($this->user->data['user_id']);
+				$usermap_wohnort_db = $this->user->profile_fields['pf_wohnort'];
+				//print_r($usermap_wohnort_db);
+				$usermap_wohnort_new = $this->request->variable('pf_wohnort', $usermap_wohnort_db);
+				//print_r($usermap_wohnort_new);
+
 				$usermap_zip = $this->request->variable('usermap_zip', $this->user->data['user_usermap_zip']);
 				$default_country = $this->request->variable('default_country', $this->user->data['user_usermap_default_country']);
 
 				// Query only if zip code has changed
-				if (($usermap_zip <> $this->user->data['user_usermap_zip']) && ($usermap_zip <> 0))
+				if (strcmp($usermap_wohnort_new, $usermap_wohnort_db) != 0 && ($usermap_wohnort_new != ''))
 				{
-					$data = $this->get_cords_form_zip($usermap_zip, $default_country, $error);
+					$data = $this->get_cords_form_zip($usermap_wohnort_new, $default_country, $error);
+					//print_r($data);
+					//print_r($error);
 					$lon = $data['lon'];
 					$lat = $data['lat'];
 				}
-				else if (empty($usermap_zip) || $usermap_zip == 0)
+				else if (empty($usermap_wohnort_new) || $usermap_wohnort_new == '')
 				{
 					$lon = 0;
 					$lat = 0;
