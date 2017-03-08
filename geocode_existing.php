@@ -19,6 +19,12 @@ foreach ($pdo->query($sql) as $row) {
  }
 }
 
+function _randomize_coordinate($coordinate)
+{
+	$rand = rand(11111, 99999);
+	return number_format($coordinate, 2) . $rand;
+}
+
 function get_cords_form_zip($zip)
 	{
 		$zip = str_replace(' ', '%20', $zip);
@@ -34,8 +40,8 @@ function get_cords_form_zip($zip)
 		if (isset($info['results']['0']['geometry']['location']))
 		{
 			return array(
-				'lon'		=> substr($info['results']['0']['geometry']['location']['lng'], 0, 10),
-				'lat'		=> substr($info['results']['0']['geometry']['location']['lat'], 0, 10),
+				'lon'		=> substr(_randomize_coordinate($info['results']['0']['geometry']['location']['lng']), 0, 10),
+				'lat'		=> substr(_randomize_coordinate($info['results']['0']['geometry']['location']['lat']), 0, 10),
 			);
 		}
 		else
