@@ -1,42 +1,42 @@
 tas2580_usermap_index:
-    pattern: /usermap/
+    path: /usermap/
     defaults: { _controller: tas2580.usermap.main:index }
 tas2580_usermap_position:
-    pattern: /usermap/position
+    path: /usermap/position
     defaults: { _controller: tas2580.usermap.ajax:position }
 tas2580_usermap_get_marker:
-    pattern: /usermap/marker
+    path: /usermap/marker
     defaults: { _controller: tas2580.usermap.ajax:marker }
 tas2580_usermap_search:
-    pattern: /usermap/search
+    path: /usermap/search
     defaults: { _controller: tas2580.usermap.main:search }
 tas2580_usermap_search_page:
-    pattern: /usermap/search/page-{start}.html
+    path: /usermap/search/page-{start}.html
     defaults: { _controller: tas2580.usermap.main:search }
 tas2580_usermap_get_distance:
-    pattern: /usermap/distance
+    path: /usermap/distance
     defaults: { _controller: tas2580.usermap.ajax:distance }
 tas2580_usermap_add_place:
-    pattern: /usermap/add
+    path: /usermap/add
     defaults: { _controller: tas2580.usermap.place:add }
 tas2580_usermap_place:
-    pattern: /usermap/place/{id}
+    path: /usermap/place/{id}
     defaults: { _controller: tas2580.usermap.place:view }
 tas2580_usermap_placelist:
-    pattern: /usermap/placelist/{id}
+    path: /usermap/placelist/{id}
     defaults: { _controller: tas2580.usermap.place:list_all }
 tas2580_usermap_place_delete:
-    pattern: /usermap/place/delete/{id}
+    path: /usermap/place/delete/{id}
     defaults: { _controller: tas2580.usermap.place:delete }
 tas2580_usermap_place_edit:
-    pattern: /usermap/place/edit/{id}
+    path: /usermap/place/edit/{id}
     defaults: { _controller: tas2580.usermap.place:edit }
 tas2580_usermap_comment:
-    pattern: /usermap/comment/add/{id}
+    path: /usermap/comment/add/{id}
     defaults: { _controller: tas2580.usermap.comment:add }
 tas2580_usermap_comment_edit:
-    pattern: /usermap/comment/edit/{id}
+    path: /usermap/comment/edit/{id}
     defaults: { _controller: tas2580.usermap.comment:edit }
 tas2580_usermap_comment_delete:
-    pattern: /usermap/comment/delete/{id}
+    path: /usermap/comment/delete/{id}
     defaults: { _controller: tas2580.usermap.comment:delete }
